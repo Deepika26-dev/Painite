@@ -783,6 +783,7 @@ public void click(By locator, String eleName) throws Exception
 		driver.manage().timeouts().pageLoadTimeout(timeOut, TimeUnit.SECONDS);
 	}
 	
+	//Coding for taking screenshot
 	public String screenShot()
 	{
 		return ((TakesScreenshot) driver).getScreenshotAs(OutputType.BASE64);

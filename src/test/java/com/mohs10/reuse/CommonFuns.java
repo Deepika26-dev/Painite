@@ -1,16 +1,18 @@
 package com.mohs10.reuse;
 	import org.openqa.selenium.Keys;
-	import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.StaleElementReferenceException;
+import org.openqa.selenium.WebDriver;
 	import org.openqa.selenium.interactions.Actions;
+import org.testng.Assert;
 
 import com.mohs10.base.StartBrowser;
-import com.mohs10.ActionDriver.Action;
-import com.mohs10.or.HomePage;
+	import com.mohs10.ActionDriver.Action;
+	import com.mohs10.or.AllPageObjects;
 
 	public class CommonFuns {
 		
 		public Action aDriver;
-		public WebDriver driver;
+		public static WebDriver driver;
 		
 		public CommonFuns()
 		{
@@ -18,20 +20,21 @@ import com.mohs10.or.HomePage;
 			driver = StartBrowser.driver;
 		}
 		
-		// Registration process
+		//Registration process
 				public void Register(String Firstname, String Lastname, String Email, String Pwd, String ConfirmPwd) throws Exception
 				{
 					StartBrowser.childTest = StartBrowser.parentTest.createNode("Register in DemoWeb shop");
 					aDriver.navigateToApplication("http://demowebshop.tricentis.com/");
-					aDriver.click(HomePage.lnkRegister, "Register link");
-					aDriver.click(HomePage.rbGender, "Radio button Gender");
-					aDriver.type(HomePage.txtFirstname,  Firstname, "FirstName text box");
-					aDriver.type(HomePage.txtLastname, Lastname, "LastName text box");
-					aDriver.type(HomePage.txtEmail, Email, "Email text box");
-					aDriver.type(HomePage.txtPassword, Pwd, "password text box");
-					aDriver.type(HomePage.txtConfirmpassword, ConfirmPwd, "confirm password text box");
-					aDriver.click(HomePage.btnRegister, "Register button");
-					aDriver.click(HomePage.btnContinue, "Continue button");
+					aDriver.click(AllPageObjects.lnkRegister, "Register link");
+					aDriver.click(AllPageObjects.rbGender, "Radio button Gender");
+					aDriver.type(AllPageObjects.txtFirstname,  Firstname, "FirstName text box");
+					aDriver.type(AllPageObjects.txtLastname, Lastname, "LastName text box");
+					aDriver.type(AllPageObjects.txtEmail, Email, "Email text box");
+					aDriver.type(AllPageObjects.txtPassword, Pwd, "password text box");
+					aDriver.type(AllPageObjects.txtConfirmpassword, ConfirmPwd, "confirm password text box");		
+					aDriver.click(AllPageObjects.btnRegister, "Register button");
+					aDriver.click(AllPageObjects.btnContinue, "Continue button");
+					aDriver.click(AllPageObjects.lnkLogout, "Logout link");
 				}
 				
 			//Login process
@@ -39,21 +42,22 @@ import com.mohs10.or.HomePage;
 				{
 					StartBrowser.childTest = StartBrowser.parentTest.createNode("Login to DemoWeb shop");
 					aDriver.navigateToApplication("http://demowebshop.tricentis.com/");
-					aDriver.click(HomePage.lnkLogin, "Login link");
-					aDriver.type(HomePage.txtemail, email, "email text box");
-					aDriver.type(HomePage.txtpwd, pwd, "password text box");
-					aDriver.click(HomePage.btnlogin, "Login button");
-					aDriver.click(HomePage.lnkLogout, "Logout link");
+					aDriver.click(AllPageObjects.lnkLogin, "Login link");
+					aDriver.type(AllPageObjects.txtemail, email, "email text box");
+					aDriver.type(AllPageObjects.txtpwd, pwd, "password text box");
+					aDriver.click(AllPageObjects.btnlogin, "Login button");
+					aDriver.click(AllPageObjects.lnkLogout, "Logout link");
 				}
-				//invalid login process
+				
+	   	//invalid login process
 				public void invalidLogIn(String email, String pwd) throws Exception
 				{
 					StartBrowser.childTest = StartBrowser.parentTest.createNode("Login to DemoWeb shop with invalid credentials");
 					aDriver.navigateToApplication("http://demowebshop.tricentis.com/");
-					aDriver.click(HomePage.lnkLogin, "Login link");
-					aDriver.type(HomePage.txtemail, email, "email text box");
-					aDriver.type(HomePage.txtpwd, pwd, "password text box");
-					aDriver.click(HomePage.btnlogin, "Login button");
+					aDriver.click(AllPageObjects.lnkLogin, "Login link");
+					aDriver.type(AllPageObjects.txtemail, email, "email text box");
+					aDriver.type(AllPageObjects.txtpwd, pwd, "password text box");
+					aDriver.click(AllPageObjects.btnlogin, "Login button");
 				}	
 		
 		
@@ -72,7 +76,7 @@ import com.mohs10.or.HomePage;
 		  {
 			StartBrowser.childTest = StartBrowser.parentTest.createNode("News button");
 			aDriver.navigateToApplication("http://demowebshop.tricentis.com/");
-			aDriver.click(HomePage.btnNews, "Performed click operation on News button");
+			aDriver.click(AllPageObjects.btnNews, "Performed click operation on News button");
 		  }
 		  
 		  //Blog Link
@@ -80,7 +84,7 @@ import com.mohs10.or.HomePage;
 			{
 				StartBrowser.childTest = StartBrowser.parentTest.createNode("Blog buttton");
 				aDriver.navigateToApplication("http://demowebshop.tricentis.com/");
-				aDriver.click(HomePage.btnBlog, "Performed click operation on Blog button");
+				aDriver.click(AllPageObjects.btnBlog, "Performed click operation on Blog button");
 			}
 			
 		  //Categories
@@ -88,15 +92,86 @@ import com.mohs10.or.HomePage;
 		  {
 			  	StartBrowser.childTest = StartBrowser.parentTest.createNode("Category links");
 				aDriver.navigateToApplication("http://demowebshop.tricentis.com/");
-				aDriver.click(HomePage.lnkBooks, "Performed click operation on books link");
-				aDriver.click(HomePage.lnkComputer,"Performed click operation on Computer Link");
-				aDriver.click(HomePage.lnkElectronics,"Performed click operation on Electronics Link");
-				aDriver.click(HomePage.lnkApparelandShoes,"Performed click operation on Apparel and Shoes Link");
-				aDriver.click(HomePage.lnkDigitaldownloads,"Performed click operation on Digital Downloads Link");
-				aDriver.click(HomePage.lnkJewelry,"Performed click operation on Jewelry Link");
-				aDriver.click(HomePage.lnkGiftCards,"Performed click operation on Gift Cards Link");
-			
-			  
+				aDriver.click(AllPageObjects.lnkBooks, "Performed click operation on books link");
+				aDriver.click(AllPageObjects.lnkComputer,"Performed click operation on Computer Link");
+				aDriver.click(AllPageObjects.lnkElectronics,"Performed click operation on Electronics Link");
+				aDriver.click(AllPageObjects.lnkApparelandShoes,"Performed click operation on Apparel and Shoes Link");
+				aDriver.click(AllPageObjects.lnkDigitaldownloads,"Performed click operation on Digital Downloads Link");
+				aDriver.click(AllPageObjects.lnkJewelry,"Performed click operation on Jewelry Link");
+				aDriver.click(AllPageObjects.lnkGiftCards,"Performed click operation on Gift Cards Link");
 		  }
-	}
+		  
+		  //AutoIT Reuse functions
+		  public void uploadWordFile() throws Exception
+			{
+				try {
+				
+				StartBrowser.childTest = StartBrowser.parentTest.createNode("Automation using Autoit tool");
+				aDriver.navigateToApplication("https://www.ilovepdf.com/word_to_pdf");
+				aDriver.click(AllPageObjects.selectwordfile, "Wordtopdf convert btn");
+				
+				Runtime.getRuntime().exec("Fileupload.exe");
+				
+				aDriver.click(AllPageObjects.Converttopdf, "Convert btn");
+				
+				Thread.sleep(3000);
+				aDriver.click(AllPageObjects.downloadbtn, "Download the converted file");	
+				 
+				}
+				catch (StaleElementReferenceException e) {
+					
+				}
+				finally {
+					Runtime.getRuntime().exec("Filedownload.exe");
+				}
+				  
+				Thread.sleep(5000);
+			}
+		  
+		  //Verify the website title
+		  public void VerifyingWebsiteTitle() 
+		  {
+			  StartBrowser.childTest = StartBrowser.parentTest.createNode("Verifying the Title of the Application");
+			  aDriver.navigateToApplication("http://demowebshop.tricentis.com/");
+			  
+			  String actualTitle = driver.getTitle();
+			  String expTitle = "Demo Web Shop";
+			  
+			  if(actualTitle.equalsIgnoreCase(expTitle)) 
+			  {
+				
+				System.out.println("Verified Title : Test Passed   "+actualTitle); 
+			  }
+				else {
+					System.out.println("Title Not Matched : Test Failed"+expTitle); 
+			  }
+		}
+	
+}
+		  
 
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
