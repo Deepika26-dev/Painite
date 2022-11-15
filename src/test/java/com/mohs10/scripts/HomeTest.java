@@ -88,7 +88,7 @@ import com.mohs10.reuse.CommonFuns;
 		  }		
 	
 	
-	/*
+	
 		
 	//pdf calling
 	@Test(priority = 7)
@@ -99,7 +99,7 @@ import com.mohs10.reuse.CommonFuns;
 	}
 	
 	
-	*/
+	
 	
 	
 		  }
