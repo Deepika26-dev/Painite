@@ -39,7 +39,7 @@ public class PDFReportTest {
       Table table = new Table(pointColumnWidths);
     
       //file path of screenshot
-      File file=new File("C:/Users/Dell/Desktop/Deepika/Projects/Mohs10 Framework/TestcaseScreenshots/");
+      File file=new File("C:/Users/Tharun/Downloads/Painite-master (1)/Painite-master/TestcaseScreenshots/");
       
       //storing the list in string array
        String[] ls=file.list();
@@ -139,7 +139,7 @@ public class PDFReportTest {
        //loop for adding images to the PDf
        for(int i=0;i<ls.length;i++) {
     	   
-        String imFile = "C:/Users/Dell/Desktop/Deepika/Projects/Mohs10 Framework/TestcaseScreenshots/"+ls[i];  
+        String imFile = "C:/Users/Tharun/Downloads/Painite-master (1)/Painite-master/TestcaseScreenshots/"+ls[i];  
         
         //Testcase step name
         String stepname=ls[i];
